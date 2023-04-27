@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "New action map",
+            "name": "MouseKeyboard",
             "id": "8f1eec1f-f502-4a5b-b959-58ea7184f175",
             "actions": [
                 {
@@ -103,7 +103,7 @@
                 {
                     "name": "",
                     "id": "1d3de913-443e-4f59-a3f9-3d6825221037",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -119,6 +119,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Touchscreen",
+            "id": "329248cd-1bb7-4371-945e-bdea30154210",
+            "actions": [
+                {
+                    "name": "DragMove",
+                    "type": "Value",
+                    "id": "994627d6-5577-4dfd-a080-9c77cb09ce9d",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "885882ff-f317-4ad7-aacf-af80da31dc0f",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
