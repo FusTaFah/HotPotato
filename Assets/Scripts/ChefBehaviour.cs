@@ -11,6 +11,13 @@ public class ChefBehaviour : NetworkBehaviour
 
     }
 
+    public void OnMove()
+    {
+        
+    }
+
+
+
     void Update()
     {
         
