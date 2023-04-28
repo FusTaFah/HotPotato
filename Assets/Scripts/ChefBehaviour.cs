@@ -10,7 +10,9 @@ public class ChefBehaviour : NetworkBehaviour
     //private InputAction MoveVerticalAction;
     private Rigidbody playerBody;
     private PlayerInput playerInput;
-
+    private Vector2 movementDirection = Vector2.zero;
+    [SerializeField]
+    private float movementSpeed;
 
     private void Start()
     {
@@ -22,19 +24,26 @@ public class ChefBehaviour : NetworkBehaviour
     [ServerRpc]
     void SubmitPositionRequestServerRpc(ServerRpcParams serverRpcParams = default)
     {
-
+        
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        Vector2 movementDirection = callbackContext.ReadValue<Vector2>();
-        if (IsClient)
+        if (IsOwner)
         {
+            InputActionPhase phs = callbackContext.phase;
 
-        }
-        else
-        {
-            playerBody.position += new Vector3(movementDirection.x, 0.0f, movementDirection.y);
+            switch (phs)
+            {
+                case InputActionPhase.Started:
+                    break;
+                case InputActionPhase.Performed:
+                    movementDirection = callbackContext.ReadValue<Vector2>();
+                    break;
+                case InputActionPhase.Canceled:
+                    movementDirection = Vector2.zero;
+                    break;
+            }
         }
     }
 
@@ -45,6 +54,6 @@ public class ChefBehaviour : NetworkBehaviour
 
     void Update()
     {
-        
+        playerBody.position += new Vector3(movementDirection.x, 0.0f, movementDirection.y) * movementSpeed * Time.deltaTime;
     }
 }
