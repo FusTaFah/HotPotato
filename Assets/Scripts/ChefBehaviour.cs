@@ -10,9 +10,10 @@ public class ChefBehaviour : NetworkBehaviour
     //private InputAction MoveVerticalAction;
     private Rigidbody playerBody;
     private PlayerInput playerInput;
-    private Vector2 movementDirection = Vector2.zero;
     [SerializeField]
     private float movementSpeed;
+
+    private NetworkVariable<Vector2> desiredMovementDirection = new();
 
     private void Start()
     {
@@ -21,29 +22,40 @@ public class ChefBehaviour : NetworkBehaviour
         playerInput.enabled = true;
     }
 
-    [ServerRpc]
-    void SubmitPositionRequestServerRpc(ServerRpcParams serverRpcParams = default)
+    [ServerRpc(RequireOwnership=false)]
+    void SubmitPositionRequestServerRpc(Vector2 movementDirection, ServerRpcParams serverRpcParams = default)
     {
-        
+        desiredMovementDirection.Value = movementDirection;
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        if (IsOwner)
-        {
-            InputActionPhase phs = callbackContext.phase;
+        InputActionPhase phs = callbackContext.phase;
 
-            switch (phs)
-            {
-                case InputActionPhase.Started:
-                    break;
-                case InputActionPhase.Performed:
-                    movementDirection = callbackContext.ReadValue<Vector2>();
-                    break;
-                case InputActionPhase.Canceled:
-                    movementDirection = Vector2.zero;
-                    break;
-            }
+        switch (phs)
+        {
+            case InputActionPhase.Started:
+                break;
+            case InputActionPhase.Performed:
+                if (IsServer)
+                {
+                    desiredMovementDirection.Value = callbackContext.ReadValue<Vector2>();
+                }
+                else
+                {
+                    SubmitPositionRequestServerRpc(callbackContext.ReadValue<Vector2>());
+                }
+                break;
+            case InputActionPhase.Canceled:
+                if (IsServer)
+                {
+                    desiredMovementDirection.Value = Vector2.zero;
+                }
+                else
+                {
+                    SubmitPositionRequestServerRpc(Vector2.zero);
+                }
+                break;
         }
     }
 
@@ -54,6 +66,6 @@ public class ChefBehaviour : NetworkBehaviour
 
     void Update()
     {
-        playerBody.position += new Vector3(movementDirection.x, 0.0f, movementDirection.y) * movementSpeed * Time.deltaTime;
+        playerBody.position += new Vector3(desiredMovementDirection.Value.x, 0.0f, desiredMovementDirection.Value.y) * movementSpeed * Time.deltaTime;
     }
 }
