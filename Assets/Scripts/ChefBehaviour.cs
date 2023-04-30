@@ -19,7 +19,10 @@ public class ChefBehaviour : NetworkBehaviour
     {
         playerBody = gameObject.GetComponent<Rigidbody>();
         playerInput = gameObject.GetComponent<PlayerInput>();
-        playerInput.enabled = true;
+        if (!IsLocalPlayer)
+        {
+            playerInput.enabled = false;
+        }
     }
 
     [ServerRpc(RequireOwnership=false)]
