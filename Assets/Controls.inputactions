@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Throw",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "732d802c-708c-495e-9d32-3de624fe1d85",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -54,6 +54,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardAndMouse",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aae261d4-67d6-4ced-a819-ab909d35d62d",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -167,6 +178,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1820b231-0359-4192-a9a4-6df5056cff72",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d9655f6-19e4-417c-a12f-97f553a3cf09",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
