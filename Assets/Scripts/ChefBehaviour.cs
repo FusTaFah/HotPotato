@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ChefBehaviour : NetworkBehaviour
 {
+    private bool debugOverride = false;
     //[SerializeField]
     //private InputAction MoveVerticalAction;
     private Rigidbody playerBody;
@@ -15,11 +17,14 @@ public class ChefBehaviour : NetworkBehaviour
 
     private NetworkVariable<Vector2> desiredMovementDirection = new();
 
+    Vector2 touchScreenInitialPointTouch = new();
+
     private void Start()
     {
+        debugOverride = SceneManager.GetActiveScene().name == "BetweenScene";
         playerBody = gameObject.GetComponent<Rigidbody>();
         playerInput = gameObject.GetComponent<PlayerInput>();
-        if (!IsLocalPlayer)
+        if (!IsLocalPlayer && !debugOverride)
         {
             playerInput.enabled = false;
         }
@@ -33,6 +38,12 @@ public class ChefBehaviour : NetworkBehaviour
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
+        if(callbackContext.control.device.name.Contains("Touchscreen"))
+        {
+
+
+            return;
+        }
         InputActionPhase phs = callbackContext.phase;
 
         switch (phs)
@@ -40,7 +51,7 @@ public class ChefBehaviour : NetworkBehaviour
             case InputActionPhase.Started:
                 break;
             case InputActionPhase.Performed:
-                if (IsServer)
+                if (IsServer || debugOverride)
                 {
                     desiredMovementDirection.Value = callbackContext.ReadValue<Vector2>();
                 }
@@ -50,7 +61,7 @@ public class ChefBehaviour : NetworkBehaviour
                 }
                 break;
             case InputActionPhase.Canceled:
-                if (IsServer)
+                if (IsServer || debugOverride)
                 {
                     desiredMovementDirection.Value = Vector2.zero;
                 }
@@ -64,6 +75,12 @@ public class ChefBehaviour : NetworkBehaviour
 
     public void OnThrow(InputAction.CallbackContext callbackContext)
     {
+        if (callbackContext.control.device.name.Contains("Touchscreen"))
+        {
+
+
+            return;
+        }
         Debug.Log("test throw");
     }
 
