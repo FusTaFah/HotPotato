@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class CameraBehaviour : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class CameraBehaviour : MonoBehaviour
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in players)
             {
-                if (player.GetComponent<NetworkBehaviour>().IsLocalPlayer)
+                if (player.GetComponent<NetworkBehaviour>().IsLocalPlayer || SceneManager.GetActiveScene().name == "BetweenScene")
                 {
                     Cinemachine.CinemachineVirtualCamera mainCam = gameObject.GetComponent<Cinemachine.CinemachineVirtualCamera>();
                     mainCam.Follow = player.transform;
