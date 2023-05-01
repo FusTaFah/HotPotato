@@ -22,6 +22,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PointerMove",
+                    "type": "Value",
+                    "id": "00359da7-0a91-4bc4-8802-4f0084aab789",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PointerPress",
+                    "type": "Button",
+                    "id": "468ed744-a31e-49d7-b18c-6b5604a02628",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -61,7 +79,7 @@
                 {
                     "name": "",
                     "id": "aae261d4-67d6-4ced-a819-ab909d35d62d",
-                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "TouchScreen",
@@ -181,8 +199,8 @@
                 },
                 {
                     "name": "",
-                    "id": "1820b231-0359-4192-a9a4-6df5056cff72",
-                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "id": "ae3ee7c7-54dc-45b5-8e2a-55b5a877f017",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "TouchScreen",
@@ -192,12 +210,45 @@
                 },
                 {
                     "name": "",
-                    "id": "7d9655f6-19e4-417c-a12f-97f553a3cf09",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "id": "dbf0cd39-870e-4937-a03e-502b44aeb669",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "PointerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57ed567a-482b-449f-a9ef-144f103db413",
+                    "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "TouchScreen",
-                    "action": "Move",
+                    "action": "PointerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be4dfbcf-55e1-4b30-9759-82100f9173dd",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "TouchScreen",
+                    "action": "PointerPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf661e8b-469d-4184-8961-28a32b861c5a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "PointerPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

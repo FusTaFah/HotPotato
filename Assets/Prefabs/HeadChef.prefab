@@ -228,7 +228,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: e956fc7e-4994-4c01-aa00-0deb641f8720
-    m_ActionName: Default/Move[/Keyboard/s,/Keyboard/w,/Keyboard/a,/Keyboard/d]
+    m_ActionName: Default/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Mouse/position,/Device
+      Simulator Touchscreen/position,/Simulated Touchscreen/position]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -6383464191943754088}
@@ -244,9 +245,45 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 732d802c-708c-495e-9d32-3de624fe1d85
-    m_ActionName: Default/Throw[/Mouse/leftButton]
+    m_ActionName: Default/Throw[/Mouse/leftButton,/Device Simulator Touchscreen/primaryTouch/tap,/Simulated
+      Touchscreen/primaryTouch/tap,/Mouse/position,/Device Simulator Touchscreen/position,/Simulated
+      Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6383464191943754088}
+        m_TargetAssemblyTypeName: ChefBehaviour, Assembly-CSharp
+        m_MethodName: OnPointerMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 00359da7-0a91-4bc4-8802-4f0084aab789
+    m_ActionName: Default/PointerMove[/Mouse/position,/Device Simulator Touchscreen/position,/Simulated
+      Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6383464191943754088}
+        m_TargetAssemblyTypeName: ChefBehaviour, Assembly-CSharp
+        m_MethodName: OnTouchPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 468ed744-a31e-49d7-b18c-6b5604a02628
+    m_ActionName: Default/PointerPress[/Mouse/press,/Device Simulator Touchscreen/press,/Simulated
+      Touchscreen/press,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: KeyboardAndMouse
+  m_DefaultControlScheme: Touchscreen
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
