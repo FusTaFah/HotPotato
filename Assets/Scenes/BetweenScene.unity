@@ -324,8 +324,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5338125025640402092, guid: aaf60c21fdac08b45a3f8b2ab42d3329, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: KeyboardAndMouse
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2933718058616425712, guid: aaf60c21fdac08b45a3f8b2ab42d3329, type: 3}
       propertyPath: m_Name
@@ -394,8 +394,8 @@ GameObject:
   - component: {fileID: 1236048789}
   - component: {fileID: 1236048792}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: MainCamera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
