@@ -210,17 +210,6 @@
                 },
                 {
                     "name": "",
-                    "id": "dbf0cd39-870e-4937-a03e-502b44aeb669",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardAndMouse",
-                    "action": "PointerMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "57ed567a-482b-449f-a9ef-144f103db413",
                     "path": "<Pointer>/position",
                     "interactions": "",
@@ -237,17 +226,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "TouchScreen",
-                    "action": "PointerPress",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bf661e8b-469d-4184-8961-28a32b861c5a",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardAndMouse",
                     "action": "PointerPress",
                     "isComposite": false,
                     "isPartOfComposite": false
