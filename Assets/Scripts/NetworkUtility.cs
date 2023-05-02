@@ -10,6 +10,29 @@ public class NetworkUtility : MonoBehaviour
 {
     private NetworkManager netManager;
     private UnityTransport transport;
+    private UnityTransport Transport
+    {
+        get
+        {
+            if(transport == null)
+            {
+                transport = gameObject.GetComponent<UnityTransport>();
+            }
+            return transport;
+        }
+    }
+    private NetworkManager NetManager
+    {
+        get
+        {
+            if(netManager == null)
+            {
+                netManager = gameObject.GetComponent<NetworkManager>();
+            }
+            return netManager;
+        }
+    }
+
     [SerializeField]
     private GameObject playerPrefab;
     private float timeSinceJoinTimer;
@@ -18,19 +41,31 @@ public class NetworkUtility : MonoBehaviour
     private bool joinedMainScene = false;
     private Queue<ulong> userIDQueue = new();
 
+    public string JoinConnectIPAddress => Transport.ConnectionData.Address;
+
+    public int JoinConnectPort => Transport.ConnectionData.Port;
+
+    private bool startedConnection = false;
+    public bool IsClientStartedConnection => startedConnection;
+
     private bool isMaster
     {
-        get => netManager.IsHost || netManager.IsServer;
+        get => NetManager.IsHost || NetManager.IsServer;
+    }
+
+    public NetworkTransport.TransportEventDelegate TransportEventDelegate
+    {
+        set 
+        {
+            Transport.OnTransportEvent += value; 
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
-        netManager = gameObject.GetComponent<NetworkManager>();
-        transport = gameObject.GetComponent<UnityTransport>();
-        netManager.OnClientConnectedCallback += OnJoin;
-        netManager.OnClientDisconnectCallback += OnLeave;
+        NetManager.OnClientConnectedCallback += OnJoin;
+        NetManager.OnClientDisconnectCallback += OnLeave;
         SceneManager.sceneLoaded += (scene, LoadSceneMode) => OnJoinScene(scene);
-
     }
 
     private void Update()
@@ -63,6 +98,19 @@ public class NetworkUtility : MonoBehaviour
 
     }
 
+    public void BackToMainMenu()
+    {
+        NetManager.Shutdown();
+        startedConnection = false;
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void CancelConnection()
+    {
+        NetManager.Shutdown();
+        startedConnection = false;
+    }
+
     private void OnJoinScene(Scene joinedScene)
     {
         if(joinedScene.name == "SampleScene")
@@ -87,12 +135,13 @@ public class NetworkUtility : MonoBehaviour
 
     public void StartHost()
     {
-        netManager.StartHost();
+        NetManager.StartHost();
     }
 
     public void StartClient(string ipAddress)
     {
-        transport.SetConnectionData(ipAddress, 7777);
-        netManager.StartClient();
+        Transport.SetConnectionData(ipAddress, 7777, "0.0.0.0");
+        NetManager.StartClient();
+        startedConnection = true;
     }
 }
