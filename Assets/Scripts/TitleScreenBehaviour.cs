@@ -24,6 +24,17 @@ public class TitleScreenBehaviour : MonoBehaviour
     private TMPro.TMP_InputField IPTextField;
     [SerializeField]
     private NetworkUtility utility;
+    private NetworkUtility Utility
+    {
+        get
+        {
+            if(utility == null)
+            {
+                utility = GameObject.Find("NetworkManager").GetComponent<NetworkUtility>();
+            }
+            return utility;
+        }
+    }
     [SerializeField]
     private TMPro.TMP_Text ipDisplay;
 
@@ -42,10 +53,10 @@ public class TitleScreenBehaviour : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Finish") == null)
         {
-            Instantiate(utility);
+            Instantiate(Utility);
         }
         SetMode(TitleState.TITLE);
-        utility.TransportEventDelegate = TransportDelegate;
+        Utility.TransportEventDelegate = TransportDelegate;
     }
 
     // Update is called once per frame
@@ -124,7 +135,7 @@ public class TitleScreenBehaviour : MonoBehaviour
                 Server.transform.GetChild(0).gameObject.SetActive(false);
                 BackButton.transform.GetChild(0).gameObject.SetActive(true);
                 Joining.transform.GetChild(0).gameObject.SetActive(true);
-                ipDisplay.text = "Connecting to " + utility.JoinConnectIPAddress + " on port " + utility.JoinConnectPort;
+                ipDisplay.text = "Connecting to " + Utility.JoinConnectIPAddress + " on port " + Utility.JoinConnectPort;
                 break;
         }
     }
@@ -140,7 +151,7 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     public void Connect()
     {
-        utility.StartClient(IPTextField.text);
+        Utility.StartClient(IPTextField.text);
     }
 
     private void TransportDelegate(NetworkEvent eventType, ulong clientId, System.ArraySegment<byte> payload, float receiveTime)
@@ -162,9 +173,14 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     public void CancelConnection()
     {
-        if (utility.IsClientStartedConnection)
+        if (Utility.IsClientStartedConnection)
         {
-            utility.CancelConnection();
+            Utility.CancelConnection();
         }
+    }
+
+    public void StartHost()
+    {
+        Utility.StartHost();
     }
 }

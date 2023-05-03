@@ -1154,22 +1154,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 938706352603755915, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 938706352603755915, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
---- !u!114 &884951672 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2141482015, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
-  m_PrefabInstance: {fileID: 884951671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e1c204c1cbc214db21bc541563d1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &939740677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,8 +1688,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 884951672}
-        m_TargetAssemblyTypeName: NetworkUtility, Assembly-CSharp
+      - m_Target: {fileID: 1686630933}
+        m_TargetAssemblyTypeName: TitleScreenBehaviour, Assembly-CSharp
         m_MethodName: StartHost
         m_Mode: 1
         m_Arguments:
@@ -2257,7 +2250,7 @@ MonoBehaviour:
   Joining: {fileID: 236001632}
   BackButton: {fileID: 178374523}
   IPTextField: {fileID: 328609924}
-  utility: {fileID: 884951672}
+  utility: {fileID: 0}
   ipDisplay: {fileID: 2093568813}
 --- !u!1 &1721205698
 GameObject:

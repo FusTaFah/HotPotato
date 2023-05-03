@@ -60,9 +60,20 @@ public class NetworkUtility : MonoBehaviour
             Transport.OnTransportEvent += value; 
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private static NetworkUtility playerInstance;
+
+    void Awake()
     {
+        if(playerInstance == null)
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        NetManager.SetSingleton();
         NetManager.OnClientConnectedCallback += OnJoin;
         NetManager.OnClientDisconnectCallback += OnLeave;
         SceneManager.sceneLoaded += (scene, LoadSceneMode) => OnJoinScene(scene);
@@ -98,11 +109,10 @@ public class NetworkUtility : MonoBehaviour
 
     }
 
-    public void BackToMainMenu()
+    public void Shutdown()
     {
         NetManager.Shutdown();
         startedConnection = false;
-        SceneManager.LoadScene("TitleScreen");
     }
 
     public void CancelConnection()
