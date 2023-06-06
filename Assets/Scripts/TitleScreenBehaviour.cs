@@ -154,6 +154,11 @@ public class TitleScreenBehaviour : MonoBehaviour
         Utility.StartClient(IPTextField.text);
     }
 
+    public void ConnectHardCode()
+    {
+        utility.StartClient("192.168.0.10");
+    }
+
     private void TransportDelegate(NetworkEvent eventType, ulong clientId, System.ArraySegment<byte> payload, float receiveTime)
     {
         switch (eventType)
@@ -166,7 +171,7 @@ public class TitleScreenBehaviour : MonoBehaviour
                     pld[i] = (char)payload[i];
                 }
                 string payld = new string(pld);
-                ipDisplay.text = receiveTime + ": could not connect. \n" + payld;
+                ipDisplay.text =  $"{receiveTime}: could not connect. \n" + payld;
                 break;
         }
     }
