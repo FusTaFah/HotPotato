@@ -1154,10 +1154,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 938706352603755915, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 938706352603755915, guid: 3b3dfd97c7342aa48b04efdc8daf3636, type: 3}
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
