@@ -176,50 +176,7 @@ public class ChefBehaviour : NetworkBehaviour
         if(fakeChefInGame != null)
         {
             fakeChefInGame.gameObject.transform.position += new Vector3(intendedMovementDirection.x, 0.0f, intendedMovementDirection.y) * movementSpeed * Time.deltaTime;
-            ////is this the one we control
-            //if (!IsServer && IsLocalPlayer)
-            //{
-            //    fakeChefInGame.gameObject.transform.position += new Vector3(intendedMovementDirection.x, 0.0f, intendedMovementDirection.y) * movementSpeed * Time.deltaTime;
-            //}
-            ////is this the one we do not control
-            //else if (!IsLocalPlayer)
-            //{
-            //    //the objective of the MusTerpolation is to fulfill a certain amount of distance between the reported poisition of the last tick and the
-            //    //position that the real chef moved
-
-            //    //assess the current real position status
-            //    Vector3 currentRealPosition = gameObject.transform.position;
-            //    Vector3 fromPreviousToCurrentPosition = currentRealPosition - realChefPreviousPosition;
-
-            //    float distanceBetweenSquared = (fromPreviousToCurrentPosition).sqrMagnitude;
-            //    if (distanceBetweenSquared > 0.000001f)
-            //    {
-            //        // sqrt(distanceBetweenSquared) was travelled by ChefBehaviour in Time.deltaTime seconds
-            //        // therefore, the velocity of the fakeChefInGame must be sqrt(distanceBetweenSquared) / Time.deltaTime
-            //        float timeSinceLastFrame = Time.deltaTime;
-            //        //how much do we need to go?
-            //        float distanceToProgress = timeSinceLastFrame / secondsPerTick;
-            //        fakeChefInGame.gameObject.transform.position += fromPreviousToCurrentPosition * distanceToProgress;
-            //        ////if we are still within the same real chef position, we need to work towards translating the fake chef along the "track" of movement that the real chef took
-            //        //if (currentRealPosition == realChefPreviousPosition)
-            //        //{
-            //        //    // sqrt(distanceBetweenSquared) was travelled by ChefBehaviour in Time.deltaTime seconds
-            //        //    // therefore, the velocity of the fakeChefInGame must be sqrt(distanceBetweenSquared) / Time.deltaTime
-            //        //    float timeSinceLastFrame = Time.deltaTime;
-            //        //    //how much do we need to go?
-            //        //    float distanceToProgress = timeSinceLastFrame / secondsPerTick;
-            //        //    fakeChefInGame.gameObject.transform.position += fromPreviousToCurrentPosition * distanceToProgress;
-            //        //}
-            //        ////if we have finally advanced a server tick, recalculate our bounds based on new origin point
-            //        //else
-            //        //{
-
-            //        //}
-            //    }
-            //    realChefPreviousPosition = currentRealPosition;
-            //}
         }
-        //timeSinceLastTick += Time.deltaTime;
         //may need this in the future Vector3.Cross(Camera.main.transform.right, Vector3.up)
     }
 }
